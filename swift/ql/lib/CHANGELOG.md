@@ -1,3 +1,17 @@
+## 5.0.9
+
+No user-facing changes.
+
+## 5.0.8
+
+No user-facing changes.
+
+## 5.0.7
+
+### Minor Analysis Improvements
+
+* Updated to allow analysis of Swift 6.1.3.
+
 ## 5.0.6
 
 No user-facing changes.

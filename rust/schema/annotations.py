@@ -266,7 +266,7 @@ class _:
 
 
 @annotate(MatchArm)
-@rust.doc_test_signature("(x: i32) -> i32")
+@rust.doc_test_signature("(x: i32)")
 class _:
     """
     A match arm. For example:
@@ -1738,7 +1738,7 @@ class _:
 
     For example:
     ```rust
-    fn foo() -> i32 {}
+    fn foo() -> i32 { 0 }
     //       ^^^^^^
     ```
     """
@@ -1828,18 +1828,27 @@ class _:
 @annotate(StmtList)
 class _:
     """
-    A list of statements in a block.
+    A list of statements in a block, with an optional tail expression at the
+    end that determines the block's value.
 
     For example:
     ```rust
     {
         let x = 1;
         let y = 2;
+        x + y
     }
     //  ^^^^^^^^^
     ```
     """
-
+    statements: _ | doc("statements of this statement list") | desc("""
+      The statements of a `StmtList` do not include any tail expression, which
+      can be accessed with predicates such as `getTailExpr`.
+    """)
+    tail_expr: _ | doc("tail expression of this statement list") | desc("""
+      The tail expression is the expression at the end of a block, that
+      determines the block's value.
+    """)
 
 @annotate(Struct, replace_bases={Item: None})  # still an Item via Adt
 class _:
@@ -2457,7 +2466,7 @@ class _:
 
     For example:
     ```rust
-    pub fn hello<'a, T, const N: usize>() -> impl Sized + use<'a, T, N> {}
+    pub fn hello<'a, T, const N: usize>() -> impl Sized + use<'a, T, N> { 0 }
     //                                                        ^^^^^^^^
     ```
     """

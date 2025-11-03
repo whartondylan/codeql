@@ -1,3 +1,15 @@
+## 2.0.20
+
+No user-facing changes.
+
+## 2.0.19
+
+No user-facing changes.
+
+## 2.0.18
+
+No user-facing changes.
+
 ## 2.0.17
 
 ### Minor Analysis Improvements

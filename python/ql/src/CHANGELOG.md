@@ -1,3 +1,21 @@
+## 1.6.7
+
+No user-facing changes.
+
+## 1.6.6
+
+### Minor Analysis Improvements
+
+- The queries that check for unmatchable `$` and `^` in regular expressions did not account correctly for occurrences inside lookahead and lookbehind assertions. These occurrences are now handled correctly, eliminating this source of false positives.
+* The `py/inheritance/signature-mismatch` query has been modernized. It produces more precise results and more descriptive alert messages. 
+* The `py/inheritance/incorrect-overriding-signature` query has been deprecated. Its results have been consolidated into the `py/inheritance/signature-mismatch` query.
+
+## 1.6.5
+
+### Minor Analysis Improvements
+
+* The queries `py/missing-call-to-init`, `py/missing-calls-to-del`, `py/multiple-calls-to-init`, and `py/multiple-calls-to-del` queries have been modernized; no longer relying on outdated libraries, producing more precise results with more descriptive alert messages, and improved documentation.
+
 ## 1.6.4
 
 ### Minor Analysis Improvements

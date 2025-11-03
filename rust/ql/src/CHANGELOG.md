@@ -1,3 +1,25 @@
+## 0.1.18
+
+### New Queries
+
+* Added a new query, `rust/insecure-cookie`, to detect cookies created without the 'Secure' attribute.
+
+## 0.1.17
+
+### New Queries
+
+* Added a new query, `rust/non-https-url`, for detecting the use of non-HTTPS URLs that can be intercepted by third parties.
+
+## 0.1.16
+
+### New Queries
+
+* Added a new query, `rust/request-forgery`, for detecting server-side request forgery vulnerabilities.
+
+### Bug Fixes
+
+* The message for `rust/diagnostic/database-quality` has been updated to include detailed database health metrics. These changes are visible on the tool status page.
+
 ## 0.1.15
 
 ### New Queries

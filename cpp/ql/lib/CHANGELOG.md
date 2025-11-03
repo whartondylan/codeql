@@ -1,3 +1,27 @@
+## 6.0.0
+
+### Breaking Changes
+
+* The "Guards" libraries (`semmle.code.cpp.controlflow.Guards` and `semmle.code.cpp.controlflow.IRGuards`) have been totally rewritten to recognize many more guards. The API remains unchanged, but the `GuardCondition` class now extends `Element` instead of `Expr`.
+
+### New Features
+
+* C/C++ `build-mode: none` support is now generally available.
+
+## 5.6.1
+
+No user-facing changes.
+
+## 5.6.0
+
+### Deprecated APIs
+
+* The predicate `getAContructorCall` in the class `SslContextClass` has been deprecated. Use `getAConstructorCall` instead.
+
+### New Features
+
+* Added predicates `getTransitiveNumberOfVlaDimensionStmts`, `getTransitiveVlaDimensionStmt`, and `getParentVlaDecl` to `VlaDeclStmt` for handling `VlaDeclStmt`s whose base type is defined in terms of another `VlaDeclStmt` via a `typedef`.
+
 ## 5.5.0
 
 ### New Features

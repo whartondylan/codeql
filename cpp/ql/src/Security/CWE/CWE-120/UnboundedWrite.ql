@@ -109,7 +109,7 @@ predicate lessThanOrEqual(IRGuardCondition g, Expr e, boolean branch) {
     g.comparesEq(left, _, _, true, branch)
   |
     interestingLessThanOrEqual(left) and
-    left.getDef().getUnconvertedResultExpression() = e
+    left.getDef().getConvertedResultExpression() = e
   )
 }
 
@@ -128,7 +128,7 @@ module Config implements DataFlow::ConfigSig {
   predicate observeDiffInformedIncrementalMode() { any() }
 
   Location getASelectedSinkLocation(DataFlow::Node sink) {
-    exists(BufferWrite bw | result = bw.getLocation() | isSink(sink, bw, _))
+    exists(BufferWrite bw | result = [bw.getLocation(), sink.getLocation()] | isSink(sink, bw, _))
   }
 }
 

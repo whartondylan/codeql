@@ -1020,6 +1020,12 @@ module MakeWithSplitting<
         not jbp instanceof BasicBlocks::EntryBasicBlock and
         id = idOfAstNode(jbp.getFirstNode().(AstCfgNode).getAstNode()) and
         kind = 1
+        or
+        exists(AnnotatedExitNode aen |
+          jbp.getFirstNode() = aen and
+          id = idOfCfgScope(aen.getScope()) and
+          if aen.isNormal() then kind = 2 else kind = 3
+        )
       }
 
       string getSplitString(BasicBlocks::JoinPredecessorBasicBlock jbp) {
@@ -1178,6 +1184,11 @@ module MakeWithSplitting<
   }
 
   final class AnnotatedExitNode = AnnotatedExitNodeImpl;
+
+  /** A control flow node indicating normal termination of a callable. */
+  final class NormalExitNode extends AnnotatedExitNodeImpl {
+    NormalExitNode() { this = TAnnotatedExitNode(_, true) }
+  }
 
   /** An exit node for a given scope. */
   private class ExitNodeImpl extends NodeImpl, TExitNode {

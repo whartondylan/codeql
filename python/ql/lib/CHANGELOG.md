@@ -1,3 +1,19 @@
+## 4.0.17
+
+### Bug Fixes
+
+* The Python extractor no longer crashes with an `ImportError` when run using Python 3.14.
+
+## 4.0.16
+
+### Minor Analysis Improvements
+
+* Data flow tracking through global variables now supports nested field access patterns such as `global_var.obj.field`. This improves the precision of taint tracking analysis when data flows through complex global variable structures.
+
+## 4.0.15
+
+No user-facing changes.
+
 ## 4.0.14
 
 ### Minor Analysis Improvements

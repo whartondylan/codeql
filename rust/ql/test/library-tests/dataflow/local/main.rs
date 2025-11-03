@@ -69,6 +69,18 @@ fn assignment() {
     sink(i);
     i = source(6);
     sink(i); // $ hasValueFlow=6
+    i = 2;
+    sink(i);
+
+    let mut j = 3;
+    let k = source(7);
+    j = k;
+    sink(j); // $ hasValueFlow=7
+    sink(k); // $ hasValueFlow=7
+
+    let mut l = source(8);
+    l = l;
+    sink(l); // $ hasValueFlow=8
 }
 
 fn block_expression1() -> i64 {
@@ -496,9 +508,9 @@ fn parse() {
     let d: i64 = b.parse().unwrap();
 
     sink(a); // $ hasValueFlow=90
-    sink_string(b); // $ MISSING: we are not currently able to resolve the `to_string` call above, which comes from `impl<T: fmt::Display + ?Sized> ToString for T`
-    sink(c); // $ MISSING: hasTaintFlow=90 - we are not currently able to resolve the `parse` call above
-    sink(d); // $ MISSING: hasTaintFlow=90 - we are not currently able to resolve the `parse` call above
+    sink_string(b); // $ hasTaintFlow=90
+    sink(c); // $ hasTaintFlow=90
+    sink(d); // $ hasTaintFlow=90
 }
 
 fn iterators() {
